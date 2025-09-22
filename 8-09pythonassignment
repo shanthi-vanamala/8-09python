@@ -1,0 +1,58 @@
+#Duck typing
+class Dog:
+    def speak(self):
+        return "Woof!"
+
+class Cat:
+    def speak(self):
+        return "Meow!"
+
+# Duck typing: function doesn’t care about type, just method
+def animal_sound(animal):
+    print(animal.speak())
+
+dog = Dog()
+cat = Cat()
+animal_sound(dog)   # Woof!
+animal_sound(cat)   # Meow!
+#operator overloading
+class Book:
+    def __init__(self, pages):
+        self.pages = pages
+
+    # Overloading + operator
+    def __add__(self, other):
+        return self.pages + other.pages
+
+b1 = Book(100)
+b2 = Book(200)
+print("Total Pages:", b1 + b2)  # 300
+#method overloading
+class MathOps:
+    def add(self, a=0, b=0, c=0):
+        return a + b + c
+
+m = MathOps()
+print(m.add(5, 10))        # 15
+print(m.add(2, 4, 6))      # 12
+print(m.add())             # 0
+#method overriding
+class Vehicle:
+    def move(self):
+        print("Vehicle is moving")
+
+class Car(Vehicle):
+    def move(self):
+        print("Car is driving on road")
+
+class Boat(Vehicle):
+    def move(self):
+        print("Boat is sailing on water")
+
+v = Vehicle()
+c = Car()
+b = Boat()
+
+v.move()   # Vehicle is moving
+c.move()   # Car is driving on road
+b.move()   # Boat is sailing on water
